@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#1f5faa" />
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./style.css" />
+  <title>Bolnička Navigacija (MVP)</title>
+</head>
+<body>
+  <div class="phone">
+    <header class="topbar">
+      <div class="brand">
+        <img class="logoimg" src="./assets/logo.png" alt="Logo">
+        <div class="title" id="t_app_title">Bolnička Navigacija</div>
+      </div>
+      <button class="chip chipbtn" id="lang-btn">HR ▾</button>
+    </header>
+
+    <main id="app">
+      <!-- LOGIN -->
+      <section class="screen active" id="screen-login">
+        <div class="hero-card">
+          <div class="hero-img hero-photo">
+            <img src="./assets/hospital.jpg" alt="Bolnica">
+            <div class="hero-overlay">
+              <div class="hero-title" id="t_hero_title">Bolnica (demo)</div>
+              <div class="hero-sub" id="t_hero_sub">Indoor navigacija • MVP</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="t_login_title">Prijavite se ili nastavite kao gost:</h2>
+
+        <button class="btn btn-ghost" id="btn-guest">Nastavi kao gost</button>
+        <button class="btn btn-primary" id="btn-staff">Prijava za medicinsko osoblje</button>
+
+        <div class="field">
+          <label id="t_email">E-mail</label>
+          <input id="email-input" type="email" placeholder="email@example.com" />
+        </div>
+        <div class="field">
+          <label id="t_pass">Lozinka</label>
+          <input id="pass-input" type="password" placeholder="••••••••" />
+        </div>
+
+        <button class="btn btn-primary" id="btn-login">Prijava</button>
+        <div class="link" id="t_forgot">Zaboravili ste lozinku?</div>
+      </section>
+
+      <!-- HOME -->
+      <section class="screen" id="screen-home">
+        <div class="search">
+          <input id="search-input" placeholder="Odaberite odjel ili doktora..." />
+        </div>
+
+        <button class="btn btn-primary" id="btn-qr">Ili skenirajte QR kod</button>
+        <button class="btn btn-ghost" id="btn-loc">Koristi moju lokaciju</button>
+        <div class="sub" id="loc-status" style="margin-top:8px;">Lokacija: nije uključena</div>
+
+        <h3 id="t_popular">Popularne pretrage</h3>
+        <div class="list" id="popular-list"></div>
+
+        <div class="card mini" id="featured-card">
+          <div class="row">
+            <div class="avatar">👨‍⚕️</div>
+            <div>
+              <div class="headline" id="t_feat_doc">Prof. Dr. Marko Horvat</div>
+              <div class="sub" id="t_feat_doc_sub">Ubrzano i aritmije • 1. kat, ambulanta 112</div>
+            </div>
+            <div class="chev">›</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROUTE -->
+      <section class="screen" id="screen-route">
+        <div class="route-top">
+          <button class="iconbtn" id="btn-back">←</button>
+          <div class="route-title" id="t_qr_result">QR rezultat</div>
+          <button class="chipbtn" id="btn-close">Odustani</button>
+        </div>
+
+        <div class="map-card">
+          <svg id="map" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+        </div>
+
+        <div class="card">
+          <div class="headline" id="route-head">Moja lokacija</div>
+          <div class="sub" id="route-meta">Dolazak: 00:21 • 90 m • Uglavnom ravno</div>
+
+          <div class="pillrow">
+            <div class="pill" id="pill-wheel">♿ 1 min</div>
+            <div class="pill" id="pill-walk">🚶 1 min</div>
+            <div class="pill" id="pill-bed">🛏 1 min</div>
+            <div class="pill" id="pill-eta">⏱ 00:21</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROFILE -->
+      <section class="screen" id="screen-profile">
+        <div class="search">
+          <input id="doctor-search" placeholder="Pretraži doktore..." />
+        </div>
+
+        <div class="profile-header card">
+          <div class="row">
+            <div class="avatar big">👤</div>
+            <div>
+              <div class="headline" id="profile-name">Gost</div>
+              <div class="sub" id="profile-sub">Nije prijavljen (demo)</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-ghost" id="btn-logout">Odjava</button>
+
+        <h3 id="t_doctors">Doktori</h3>
+        <div class="list" id="doctor-list"></div>
+      </section>
+    </main>
+
+    <nav class="bottom">
+      <button class="tab active" data-go="home">🏠<span id="t_tab_home">Početna</span></button>
+      <button class="tab" data-go="route">🗺️<span id="t_tab_map">Karta</span></button>
+      <button class="tab" data-go="profile">👤<span id="t_tab_profile">Moj profil</span></button>
+    </nav>
+  </div>
+
+  <!-- SERVICE WORKER NAMJERNO ISKLJUČEN (da nema cache/black screen) -->
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "Bolnička Navigacija (MVP)",
+  "short_name": "Bolnica",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#1f5faa",
+  "icons": []
+}
